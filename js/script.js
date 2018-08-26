@@ -3,12 +3,14 @@
 //Vars
 var tweetLink = "https://twitter.com/intent/tweet?text=";
 var quoteUrl = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1";
+var prefix = "https://cors-anywhere.herokuapp.com/";
+
 
 //Functions
 
 // --- function get random quote from API quotes and run createTweet function
 function getQuote() {
-    fetch(quoteUrl, { cache: 'no-store'})
+    fetch(prefix + quoteUrl, { cache: 'no-store'})
         .then(function(resp){
             return resp.json();
         })
@@ -26,7 +28,9 @@ function createTweet(input){
     if (!quoteAuthor.length) {
         quoteAuthor = "Unkown author";
     }
+
     var tweetText = "Quote of the day - " + quoteText + " Author: " + quoteAuthor;
+    
     if (tweetText.length > 140) {
         getQuote();
     } else {

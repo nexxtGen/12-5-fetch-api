@@ -14,7 +14,7 @@ function getQuote() {
         .then(function(resp){
             return resp.json();
         })
-    .then(createTweet);
+        .then(createTweet);
 }
 // --- Create tweet and pin it to tweet button
 function createTweet(input){
